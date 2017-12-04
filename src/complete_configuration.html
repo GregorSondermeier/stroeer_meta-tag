@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Einbau der Steuerungsdatei am Ende des <head>'s -->
+    <script type="text/javascript"
+            src="//cdn.stroeerdigitalgroup.de/metatag/live/beispielseite/metaTag.min.js"></script>
+    <script type="text/javascript">
+        console.debug('runMetaTagConfig()');
+        SDG.Publisher.setZone('mode');
+        SDG.Publisher.addKeywords(['auto','auto_news','naesse','reifen']);
+        SDG.Publisher.addKeyValue('geschlecht', 'frau');
+        SDG.Publisher.addKeyValues({ 'interessen' : ['finanzen', 'autosport', 'mode'] });
+        SDG.Publisher.activateSecureProtocol(); //Wir erzwingen HTTPS obwohl unsere Seite ungesichert ist.
+    </script>
+</head>
+<body>
+<div id="contentWrapper">
+
+    <div id="headerBeforeNavigation">
+        <script type="text/javascript">
+			//Der Slot wird sofort nach der Registrierung geladen
+			SDG.Publisher
+				.registerSlot('banner', document.getElementById('headerBeforeNavigation'))
+				.load()
+        </script>
+    </div>
+
+    <nav>Navigation</nav>
+
+    <hr />
+
+    <main id="mainContent" class="contentWidth floatsLeft">
+        <p>Be careful, or I will spill the beans on your placeholder text. Does everybody know that pig named Lorem Ipsum? She's a disgusting pig, right? That other text? Sadly, it’s no longer a 10.</p>
+
+        <div id="adInContent">
+            <script type="text/javascript">
+				SDG.Publisher
+					.registerSlot('mrec', document.getElementById('adInContent'))
+            </script>
+        </div>
+
+        <p>Some people have an ability to write placeholder text... It's an art you're basically born with. You either have it or you don't. I think my strongest asset maybe by far is my temperament. I have a placeholding temperament.</p>
+
+        <p>You’re disgusting. An 'extremely credible source' has called my office and told me that Lorem Ipsum's birth certificate is a fraud. All of the words in Lorem Ipsum have flirted with me - consciously or unconsciously. That's to be expected.</p>
+
+        <p>You're telling the enemy exactly what you're going to do. No wonder you've been fighting Lorem Ipsum your entire adult life. You're telling the enemy exactly what you're going to do. No wonder you've been fighting Lorem Ipsum your entire adult life.</p>
+
+        <p>Despite the constant negative ipsum covfefe. You know, it really doesn’t matter what you write as long as you’ve got a young, and beautiful, piece of text.</p>
+    </main>
+
+    <hr />
+
+    <aside class="sidebar floatsRight">
+        <ul>
+            <li>Sidebar Item 1</li>
+            <li>Sidebar Item 2</li>
+            <li>Sidebar Item 3</li>
+        </ul>
+        <div id="adInSidebar">
+            <script type="text/javascript">
+				SDG.Publisher
+					.registerSlot('sky', document.getElementById('adInSidebar'))
+            </script>
+        </div>
+    </aside>
+
+</div>
+<script type="text/javascript">
+	//Nachdem die Seite fertig geladen ist, werden alle restlichen Werbemittel dargestellt.
+	SDG.Publisher
+		.loadAllSlots(false); //false damit der bereits geladene "banner" slot nicht nochmals geladen wird.
+</script>
+</body>
+</html>

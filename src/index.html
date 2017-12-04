@@ -1,45 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- Einbau der Steuerungsdatei am Ende des <head>'s -->
-    <script type="text/javascript" src="//cdn.stroeerdigitalgroup.de/metatag/live/beispielseite/metaTag.min.js"></script>
-    <script type="text/javascript">
-		SDG.Publisher.setZone('mode');
-		SDG.Publisher.addKeywords(['auto','auto_news','naesse','reifen']);
-		SDG.Publisher.addKeyValue('geschlecht', 'frau');
-		SDG.Publisher.addKeyValues({ 'interessen' : ['finanzen', 'autosport', 'mode'] });
-		SDG.Publisher.activateSecureProtocol(); //Wir erzwingen HTTPS obwohl unsere Seite ungesichert ist.
-    </script>
+    <title>Ströer MetaTag Tests</title>
 </head>
 <body>
-<div id="contentWrapper">
-    <div id="headerBeforeNavigation">
-        <script type="text/javascript">
-			//Der Slot wird sofort nach der Registrierung geladen
-			SDG.Publisher.registerSlot('banner', document.getElementById('headerBeforeNavigation')).load()
-        </script>
-    </div>
-    <nav>Navigation</nav>
-    <main id="mainContent" class="contentWidth floatsLeft">
-        Content<br>
-        Content<br>
-        <div id="adInContent">
-            <script type="text/javascript">
-				SDG.Publisher.registerSlot('mrec', document.getElementById('adInContent'))
-            </script>
-        </div>
-    </main>
-    <aside class="sidebar floatsRight">
-        <div id="adInSidebar">
-            <script type="text/javascript">
-				SDG.Publisher.registerSlot('sky', document.getElementById('adInSidebar'))
-            </script>
-        </div>
-    </aside>
-</div>
-<script type="text/javascript">
-	//Nachdem die Seite fertig geladen ist, werden alle restlichen Werbemittel dargestellt.
-	SDG.Publisher.loadAllSlots(false); //false damit der bereits geladene "banner" slot nicht nochmals geladen wird.
-</script>
+
+<h1>Ströer MetaTag Tests</h1>
+<p>Hier ein paar Testseiten, um die Einbindung und Verwendung der <a href="https://stroeerdigitalgroup.atlassian.net/wiki/spaces/SDPUBLIC/pages/24944817/MetaTag+Dokumentation" target="_blank">Stöer MetaTag</a>s durchzuspielen.</p>
+
+<ul>
+    <li><a href="complete_configuration.html">Vollständige Konfiguration</a></li>
+    <li><a href=""></a></li>
+    <li><a href=""></a></li>
+    <li><a href=""></a></li>
+    <li><a href=""></a></li>
+</ul>
+
 </body>
 </html>
