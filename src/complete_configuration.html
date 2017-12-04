@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+    <title>Vollständige Konfiguration | Ströer MetaTag Tests</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+
     <!-- Einbau der Steuerungsdatei am Ende des <head>'s -->
     <script type="text/javascript"
             src="//cdn.stroeerdigitalgroup.de/metatag/live/beispielseite/metaTag.min.js"></script>
@@ -13,7 +18,9 @@
         SDG.Publisher.activateSecureProtocol(); //Wir erzwingen HTTPS obwohl unsere Seite ungesichert ist.
     </script>
 </head>
+
 <body>
+
 <div id="contentWrapper">
 
     <div id="headerBeforeNavigation">
@@ -70,5 +77,55 @@
 	SDG.Publisher
 		.loadAllSlots(false); //false damit der bereits geladene "banner" slot nicht nochmals geladen wird.
 </script>
+
+<script>
+	window.addEventListener('metaTagSystemBeforeLoadAll', function(e) {
+		console.log('on metaTagSystemBeforeLoadAll -> e:', e)
+	});
+	window.addEventListener('metaTagSystemContentLoaded', function(e) {
+		console.log('on metaTagSystemContentLoaded -> e:', e)
+	});
+	window.addEventListener('metaTagSystemLoadedAll', function(e) {
+		console.log('on metaTagSystemLoadedAll -> e:', e)
+	});
+	window.addEventListener('metaTagSystemAdServerModuleLoaded', function(e) {
+		console.log('on metaTagSystemAdServerModuleLoaded -> e:', e)
+	});
+	window.addEventListener('metaTagSystemContentElementLoaded', function(e) {
+		console.log('on metaTagSystemContentElementLoaded -> e:', e)
+	});
+	window.addEventListener('metaTagSystemPrebidResponded', function(e) {
+		console.log('on metaTagSystemPrebidResponded -> e:', e)
+	});
+	window.addEventListener('metaTagSystemAdBlockerCheckComplete', function(e) {
+		console.log('on metaTagSystemAdBlockerCheckComplete -> e:', e)
+	});
+	window.addEventListener('metaTagSystemZoneSet', function(e) {
+		console.log('on metaTagSystemZoneSet -> e:', e)
+	});
+	window.addEventListener('metatagSystemPageTypeSet', function(e) {
+		console.log('on metatagSystemPageTypeSet -> e:', e)
+	});
+	window.addEventListener('metaTagSystemSlotRegistered', function(e) {
+		console.log('on metaTagSystemSlotRegistered -> e:', e)
+	});
+	window.addEventListener('metaTagSystemSlotDeleted', function(e) {
+		console.log('on metaTagSystemSlotDeleted -> e:', e)
+	});
+	window.addEventListener('metaTagSystemSlotPrepared', function(e) {
+		console.log('on metaTagSystemSlotPrepared -> e:', e)
+	});
+	window.addEventListener('metaTagSystemSlotCalling', function(e) {
+		console.log('on metaTagSystemSlotCalling -> e:', e)
+	});
+	window.addEventListener('metaTagSystemSlotResponded', function(e) {
+		console.log('on metaTagSystemSlotResponded -> e:', e)
+	});
+	window.addEventListener('metaTagSystemSlotDone', function(e) {
+		console.log('on metaTagSystemSlotDone -> e:', e)
+	});
+</script>
+
 </body>
+
 </html>
