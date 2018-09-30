@@ -11,11 +11,20 @@
             src="//cdn.stroeerdigitalgroup.de/metatag/live/beispielseite/metaTag.min.js"></script>
     <script type="text/javascript">
         console.debug('runMetaTagConfig()');
-        SDG.Publisher.setZone('mode');
-        SDG.Publisher.addKeywords(['auto','auto_news','naesse','reifen']);
-        SDG.Publisher.addKeyValue('geschlecht', 'frau');
-        SDG.Publisher.addKeyValues({ 'interessen' : ['finanzen', 'autosport', 'mode'] });
-        SDG.Publisher.activateSecureProtocol(); //Wir erzwingen HTTPS obwohl unsere Seite ungesichert ist.
+        SDG.Publisher.setZone('homepage');
+        SDG.Publisher.addKeywords(['auto','auto_news','naesse','reifen', 'foo', 'bar']);
+        SDG.Publisher.removeKeywords(['foo', 'bar']);
+        SDG.Publisher.addKeyValue('stadt', 'hamburg');
+        SDG.Publisher.addKeyValues({
+            'interessen': ['finanzen', 'autosport', 'mode']
+        });
+        // SDG.Publisher.finalizeSlots();
+        // SDG.Publisher.activateSecureProtocol(); //Wir erzwingen HTTPS obwohl unsere Seite ungesichert ist.
+
+        SDG.Publisher.registerSlot('banner', 'adBeforeHeader').load();
+        SDG.Publisher.registerSlot('mrec', 'adAfterP3').load();
+        SDG.Publisher.registerSlot('sky', 'adInSidebar').load();
+		SDG.Publisher.finalizeSlots();
     </script>
 </head>
 
@@ -23,14 +32,7 @@
 
 <div id="contentWrapper">
 
-    <div id="headerBeforeNavigation">
-        <script type="text/javascript">
-			//Der Slot wird sofort nach der Registrierung geladen
-			SDG.Publisher
-				.registerSlot('banner', document.getElementById('headerBeforeNavigation'))
-				.load()
-        </script>
-    </div>
+    <div id="adBeforeHeader" class="ad"></div>
 
     <nav><h3>Navigation</h3></nav>
 
@@ -41,23 +43,13 @@
 
         <p>Paragraph 1: Be careful, or I will spill the beans on your placeholder text. Does everybody know that pig named Lorem Ipsum? She's a disgusting pig, right? That other text? Sadly, it’s no longer a 10.</p>
 
-        <div id="adAfterP1">
-            <script type="text/javascript">
-				SDG.Publisher
-					.registerSlot('mrec', document.getElementById('adAfterP1'))
-            </script>
-        </div>
+        <div id="adAfterP1" class="ad"></div>
 
         <p>Paragraph 2: Some people have an ability to write placeholder text... It's an art you're basically born with. You either have it or you don't. I think my strongest asset maybe by far is my temperament. I have a placeholding temperament.</p>
 
         <p>Paragraph 3: You’re disgusting. An 'extremely credible source' has called my office and told me that Lorem Ipsum's birth certificate is a fraud. All of the words in Lorem Ipsum have flirted with me - consciously or unconsciously. That's to be expected.</p>
 
-        <div id="adAfterP3">
-            <script type="text/javascript">
-				SDG.Publisher
-					.registerSlot('mrec', document.getElementById('adAfterP3'))
-            </script>
-        </div>
+        <div id="adAfterP3" class="ad"></div>
 
         <p>Paragraph 4: You're telling the enemy exactly what you're going to do. No wonder you've been fighting Lorem Ipsum your entire adult life. You're telling the enemy exactly what you're going to do. No wonder you've been fighting Lorem Ipsum your entire adult life.</p>
 
@@ -73,67 +65,19 @@
             <li>Sidebar Item 2</li>
             <li>Sidebar Item 3</li>
         </ul>
-        <div id="adInSidebar">
-            <script type="text/javascript">
-				SDG.Publisher
-					.registerSlot('sky', document.getElementById('adInSidebar'))
-            </script>
+        <div id="adInSidebar" class="ad">
         </div>
     </aside>
 
 </div>
 <script type="text/javascript">
 	//Nachdem die Seite fertig geladen ist, werden alle restlichen Werbemittel dargestellt.
-	SDG.Publisher
-		.loadAllSlots(false); //false damit der bereits geladene "banner" slot nicht nochmals geladen wird.
-</script>
+	// SDG.Publisher
+	// 	.loadAllSlots(false); //false damit der bereits geladene "banner" slot nicht nochmals geladen wird.
 
-<script>
-	window.addEventListener('metaTagSystemBeforeLoadAll', function(e) {
-		console.log('on metaTagSystemBeforeLoadAll -> e:', e)
-	});
-	window.addEventListener('metaTagSystemContentLoaded', function(e) {
-		console.log('on metaTagSystemContentLoaded -> e:', e)
-	});
-	window.addEventListener('metaTagSystemLoadedAll', function(e) {
-		console.log('on metaTagSystemLoadedAll -> e:', e)
-	});
-	window.addEventListener('metaTagSystemAdServerModuleLoaded', function(e) {
-		console.log('on metaTagSystemAdServerModuleLoaded -> e:', e)
-	});
-	window.addEventListener('metaTagSystemContentElementLoaded', function(e) {
-		console.log('on metaTagSystemContentElementLoaded -> e:', e)
-	});
-	window.addEventListener('metaTagSystemPrebidResponded', function(e) {
-		console.log('on metaTagSystemPrebidResponded -> e:', e)
-	});
-	window.addEventListener('metaTagSystemAdBlockerCheckComplete', function(e) {
-		console.log('on metaTagSystemAdBlockerCheckComplete -> e:', e)
-	});
-	window.addEventListener('metaTagSystemZoneSet', function(e) {
-		console.log('on metaTagSystemZoneSet -> e:', e)
-	});
-	window.addEventListener('metatagSystemPageTypeSet', function(e) {
-		console.log('on metatagSystemPageTypeSet -> e:', e)
-	});
-	window.addEventListener('metaTagSystemSlotRegistered', function(e) {
-		console.log('on metaTagSystemSlotRegistered -> e:', e)
-	});
-	window.addEventListener('metaTagSystemSlotDeleted', function(e) {
-		console.log('on metaTagSystemSlotDeleted -> e:', e)
-	});
-	window.addEventListener('metaTagSystemSlotPrepared', function(e) {
-		console.log('on metaTagSystemSlotPrepared -> e:', e)
-	});
-	window.addEventListener('metaTagSystemSlotCalling', function(e) {
-		console.log('on metaTagSystemSlotCalling -> e:', e)
-	});
-	window.addEventListener('metaTagSystemSlotResponded', function(e) {
-		console.log('on metaTagSystemSlotResponded -> e:', e)
-	});
-	window.addEventListener('metaTagSystemSlotDone', function(e) {
-		console.log('on metaTagSystemSlotDone -> e:', e)
-	});
+	window.setTimeout(function() {
+		SDG.Publisher.loadAllSlots(true)
+	}, 10000);
 </script>
 
 </body>

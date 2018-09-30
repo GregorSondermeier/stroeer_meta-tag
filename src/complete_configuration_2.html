@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Einbau der Steuerungsdatei am Ende des <head>'s -->
+    <script src="http://cdn.stroeerdigitalgroup.de/metatag/live/beispielseite/metaTag.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        SDG.Publisher.setZone('mode');
+        SDG.Publisher.addKeywords(['auto','auto_news','naesse','reifen']);
+        SDG.Publisher.addKeyValue('geschlecht', 'frau');
+        SDG.Publisher.addKeyValues({ 'interessen' : ['finanzen', 'autosport', 'mode'] });
+        SDG.Publisher.registerSlot('banner', 'headerBeforeNavigation').load();
+        SDG.Publisher.registerSlot('rectangle', 'adInContent').load();
+        SDG.Publisher.registerSlot('sky', 'adInSidebar').load();
+        SDG.Publisher.finalizeSlots();
+    </script>
+</head>
+<body>
+<div id="contentWrapper">
+    <div id="headerBeforeNavigation"> <!-- Hier wird der "banner" AdSlot dargestellt -->
+  
+    </div>
+    <nav>Navigation</nav>
+    <main id="mainContent" class="contentWidth floatsLeft">
+        Content<br>
+        Content<br>
+        <div id="adInContent"> <!-- Hier wird der "rectangle" AdSlot dargestellt -->
+             
+        </div>
+        Content<br>
+        Content<br>
+        Content der erst auf Benutzerinteraktion (scrolling, click) geladen wird<br>
+         
+        <div id="adInAsynchronContent" onclick="showContentAndAds"> <!-- Hier wird der "posterad" AdSlot dargestellt -->
+ 
+        </div>
+ 
+    </main>
+    <aside class="sidebar floatsRight">
+        <div id="adInSidebar"> <!-- Hier wird der "sky" AdSlot dargestellt -->
+             
+        </div>
+    </aside>
+</div>
+<script type="text/javascript">
+ 
+    //Die Funktion registriert und lädt den AdSlot "LazyLoad" (Beispiel Slot!), sobald der Benutzer zusätzlichen Content erfolgreich geladen hat.
+    function showContentAndAds() {
+        loadAsychronContent().set('isContentLoaded', true);
+         
+        if(isContentLoaded){
+            SDG.Publisher.registerSlot('LazyLoad', document.getElementById('adInAsynchronContent')).load()
+        }
+    }
+ 
+    //nach 60 Sekunden werden alle AdSlots neu geladen. Da alle Slots bereits einmal geladen worden sind, übergeben wir "true" als Parameter.
+    window.setTimeout(function() {
+        SDG.Publisher.loadAllSlots(true)
+    },60000);
+ 
+</script>
+</body>
+</html>
